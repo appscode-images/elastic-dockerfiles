@@ -9,7 +9,7 @@
 # Extract Elasticsearch artifact
 ################################################################################
 
-FROM centos:8 AS builder
+FROM rockylinux:8 AS builder
 
 # `tini` is a tiny but valid init for containers. This is used to cleanly
 # control how ES and any child processes are shut down.
@@ -72,7 +72,7 @@ RUN sed -i -e 's/ES_DISTRIBUTION_TYPE=tar/ES_DISTRIBUTION_TYPE=docker/' bin/elas
 # Add entrypoint
 ################################################################################
 
-FROM centos:8
+FROM rockylinux:8
 
 RUN for iter in {1..10}; do \
       yum update --setopt=tsflags=nodocs -y && \
