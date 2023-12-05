@@ -11,6 +11,16 @@
 
 FROM rockylinux:8 AS builder
 
+RUN for iter in {1..10}; do \
+      yum update --setopt=tsflags=nodocs -y && \
+      yum install --setopt=tsflags=nodocs -y \
+      findutils && \
+      yum clean all && \
+      exit_code=0 && break || \
+        exit_code=$? && echo "yum error: retry $iter in 10s" && sleep 10; \
+    done; \
+    exit $exit_code
+
 # `tini` is a tiny but valid init for containers. This is used to cleanly
 # control how ES and any child processes are shut down.
 #
@@ -75,7 +85,7 @@ FROM rockylinux:8
 RUN for iter in {1..10}; do \
       yum update --setopt=tsflags=nodocs -y && \
       yum install --setopt=tsflags=nodocs -y \
-      nc shadow-utils zip unzip  && \
+      nc shadow-utils zip unzip findutils && \
       yum clean all && \
       exit_code=0 && break || \
         exit_code=$? && echo "yum error: retry $iter in 10s" && sleep 10; \
