@@ -11,7 +11,7 @@
 # Set gid=0 and make group perms==owner perms
 ################################################################################
 
-FROM centos:7 AS builder
+FROM rockylinux:8 AS builder
 
 ENV PATH /usr/share/elasticsearch/bin:$PATH
 ENV JAVA_HOME /opt/jdk-15.0.1+9
@@ -47,7 +47,7 @@ COPY config/elasticsearch.yml config/log4j2.properties config/
 # Add entrypoint
 ################################################################################
 
-FROM centos:7
+FROM rockylinux:8
 
 ENV ELASTIC_CONTAINER true
 ENV JAVA_HOME /opt/jdk-15.0.1+9
