@@ -6,7 +6,8 @@
 # Build stage 0
 # Extract Kibana and make various file manipulations.
 ################################################################################
-FROM centos:7 AS prep_files
+FROM rockylinux:8 AS prep_files
+RUN yum update -y && yum install -y findutils && yum clean all
 RUN cd /opt && curl --retry 8 -s -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.3.1-linux-x86_64.tar.gz && cd -
 RUN mkdir /usr/share/kibana
 WORKDIR /usr/share/kibana
@@ -22,11 +23,11 @@ RUN find /usr/share/kibana -type d -exec chmod g+s {} \;
 # Build stage 1
 # Copy prepared files from the previous stage and complete the image.
 ################################################################################
-FROM centos:7
+FROM rockylinux:8
 EXPOSE 5601
 
 # Add Reporting dependencies.
-RUN yum update -y && yum install -y fontconfig freetype && yum clean all
+RUN yum update -y && yum install -y fontconfig freetype findutils && yum clean all
 
 # Add an init process, check the checksum to make sure it's a match
 RUN curl -L -o /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64
