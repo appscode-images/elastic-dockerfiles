@@ -1,5 +1,5 @@
 # This Dockerfile was generated from templates/Dockerfile.j2
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 RUN for iter in {1..10}; do \
 export DEBIAN_FRONTEND=noninteractive && \
