@@ -9,7 +9,7 @@
 # Compile zlib for the current architecture
 ################################################################################
 
-FROM ubuntu:20.04 AS zlib
+FROM ubuntu:22.04 AS zlib
 
 RUN for iter in 1 2 3 4 5 6 7 8 9 10; do \
       apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y curl gcc make && \
@@ -32,7 +32,7 @@ RUN ./configure --prefix=/usr/local/cloudflare-zlib && make && make install
 # Extract Elasticsearch artifact
 ################################################################################
 
-FROM ubuntu:20.04 AS builder
+FROM ubuntu:22.04 AS builder
 
 # Install required packages to extract the Elasticsearch distribution
 
@@ -102,7 +102,7 @@ RUN sed -i -e 's/ES_DISTRIBUTION_TYPE=tar/ES_DISTRIBUTION_TYPE=docker/' bin/elas
 # Add entrypoint
 ################################################################################
 
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # Change default shell to bash, then install required packages with retries.
 RUN yes no | dpkg-reconfigure dash && \
