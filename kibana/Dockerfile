@@ -9,7 +9,7 @@
 # Build stage 0 `builder`:
 # Extract Kibana artifact
 ################################################################################
-FROM centos:8 AS builder
+FROM rockylinux:8 AS builder
 
 
 RUN cd /opt && \
@@ -34,7 +34,7 @@ RUN chmod -R g=u /usr/share/kibana
 # Copy kibana from stage 0
 # Add entrypoint
 ################################################################################
-FROM centos:8
+FROM rockylinux:8
 EXPOSE 5601
 
 
