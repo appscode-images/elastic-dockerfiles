@@ -1,12 +1,12 @@
 # This Dockerfile was generated from templates/Dockerfile.j2
-FROM centos:7
+FROM rockylinux:8
 
 # Install Java and the "which" command, which is needed by Logstash's shell
 # scripts.
 # NOTE: pinning jdk 1.8.0.282 as .292 has an issue creating keystores
 # Logstash issue: https://github.com/elastic/logstash/issues/12917
 # OpenJDK issue: https://bugs.openjdk.java.net/browse/JDK-8266261
-RUN yum update -y && yum install -y java-1.8.0-openjdk-devel-1.8.0.282.b08 java-1.8.0-openjdk-headless-1.8.0.282.b08 which && \
+RUN yum update -y && yum install -y java-1.8.0-openjdk-devel java-1.8.0-openjdk-headless which && \
     yum clean all
 
 # Provide a non-root user to run the process.
