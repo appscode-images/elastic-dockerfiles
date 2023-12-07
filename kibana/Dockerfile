@@ -29,7 +29,6 @@ RUN tar --strip-components=1 -zxf /tmp/kibana.tar.gz
 # REF: https://docs.openshift.org/latest/creating_images/guidelines.html
 RUN chmod -R g=u /usr/share/kibana
 
-
 ################################################################################
 # Build stage 1 (the actual Kibana image):
 #
@@ -104,31 +103,24 @@ RUN groupadd --gid 1000 kibana && \
       --home-dir /usr/share/kibana --no-create-home \
       kibana
 
-LABEL org.label-schema.build-date="2023-11-10T21:05:44.206Z" \
-  org.label-schema.license="Elastic License" \
-  org.label-schema.name="Kibana" \
-  org.label-schema.schema-version="1.0" \
-  org.label-schema.url="https://www.elastic.co/products/kibana" \
-  org.label-schema.usage="https://www.elastic.co/guide/en/kibana/reference/index.html" \
-  org.label-schema.vcs-ref="09feaf416f986b239b8e8ad95ecdda0f9d56ebec" \
-  org.label-schema.vcs-url="https://github.com/elastic/kibana" \
-  org.label-schema.vendor="Elastic" \
+LABEL org.label-schema.vendor="Kibana" \
   org.label-schema.version="8.11.1" \
-  org.opencontainers.image.created="2023-11-10T21:05:44.206Z" \
-  org.opencontainers.image.documentation="https://www.elastic.co/guide/en/kibana/reference/index.html" \
-  org.opencontainers.image.licenses="Elastic License" \
-  org.opencontainers.image.revision="09feaf416f986b239b8e8ad95ecdda0f9d56ebec" \
-  org.opencontainers.image.source="https://github.com/elastic/kibana" \
-  org.opencontainers.image.title="Kibana" \
-  org.opencontainers.image.url="https://www.elastic.co/products/kibana" \
+  org.label-schema.schema-version="1.0" \
+  org.label-schema.name="Elasticsearch" \
   org.opencontainers.image.vendor="Elastic" \
-  org.opencontainers.image.version="8.11.1"
-
+  org.opencontainers.image.version="8.11.1" \
+  org.label-schema.license="Elastic-License-2.0" \
+  org.opencontainers.image.title="Kibana" \
+  org.opencontainers.image.licenses="Elastic-License-2.0" \
+  org.label-schema.url="https://www.elastic.co/guide/en/kibana/reference/index.html" \
+  org.opencontainers.image.source="https://github.com/elastic/kibana" \
+  org.opencontainers.image.url="https://www.elastic.co/products/kibana" \
+  org.opencontainers.image.revision="09feaf416f986b239b8e8ad95ecdda0f9d56ebec" \
+  org.label-schema.usage="https://www.elastic.co/guide/en/elasticsearch/reference/index.html" \
+  org.opencontainers.image.documentation="https://www.elastic.co/guide/en/elasticsearch/reference/index.html"
 
 ENTRYPOINT ["/bin/tini", "--"]
 
-
 CMD ["/usr/local/bin/kibana-docker"]
-
 
 USER kibana
