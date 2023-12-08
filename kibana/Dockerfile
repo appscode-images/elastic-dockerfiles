@@ -100,26 +100,21 @@ RUN groupadd --gid 1000 kibana && \
       --home-dir /usr/share/kibana --no-create-home \
       kibana
 
-LABEL org.label-schema.build-date="2021-09-15T09:14:27.489Z" \
-  org.label-schema.license="Elastic License" \
-  org.label-schema.name="Kibana" \
-  org.label-schema.schema-version="1.0" \
-  org.label-schema.url="https://www.elastic.co/products/kibana" \
-  org.label-schema.usage="https://www.elastic.co/guide/en/kibana/reference/index.html" \
-  org.label-schema.vcs-ref="6b971d6410ca4a99271f2abf9d3de68b7a3653a5" \
-  org.label-schema.vcs-url="https://github.com/elastic/kibana" \
-  org.label-schema.vendor="Elastic" \
+LABEL org.label-schema.vendor="Kibana" \
   org.label-schema.version="7.14.2" \
-  org.opencontainers.image.created="2021-09-15T09:14:27.489Z" \
-  org.opencontainers.image.documentation="https://www.elastic.co/guide/en/kibana/reference/index.html" \
-  org.opencontainers.image.licenses="Elastic License" \
-  org.opencontainers.image.revision="6b971d6410ca4a99271f2abf9d3de68b7a3653a5" \
-  org.opencontainers.image.source="https://github.com/elastic/kibana" \
-  org.opencontainers.image.title="Kibana" \
-  org.opencontainers.image.url="https://www.elastic.co/products/kibana" \
+  org.label-schema.schema-version="1.0" \
+  org.label-schema.name="Elasticsearch" \
   org.opencontainers.image.vendor="Elastic" \
-  org.opencontainers.image.version="7.14.2"
-
+  org.opencontainers.image.version="7.14.2" \
+  org.label-schema.license="Elastic-License-2.0" \
+  org.opencontainers.image.title="Kibana" \
+  org.opencontainers.image.licenses="Elastic-License-2.0" \
+  org.label-schema.url="https://www.elastic.co/guide/en/kibana/reference/index.html" \
+  org.opencontainers.image.source="https://github.com/elastic/kibana" \
+  org.opencontainers.image.url="https://www.elastic.co/products/kibana" \
+  org.opencontainers.image.revision="6b971d6410ca4a99271f2abf9d3de68b7a3653a5" \
+  org.label-schema.usage="https://www.elastic.co/guide/en/elasticsearch/reference/index.html" \
+  org.opencontainers.image.documentation="https://www.elastic.co/guide/en/elasticsearch/reference/index.html"
 
 USER kibana
 
