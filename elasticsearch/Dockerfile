@@ -76,7 +76,9 @@ RUN chgrp 0 /usr/local/bin/docker-entrypoint.sh && \
     chmod g=u /etc/passwd && \
     chmod 0775 /usr/local/bin/docker-entrypoint.sh
 
-RUN /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch repository-s3 repository-azure repository-gcs
+RUN /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch repository-s3
+RUN /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch repository-azure
+RUN /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch repository-gcs
 
 EXPOSE 9200 9300
 
