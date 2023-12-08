@@ -121,25 +121,23 @@ RUN chmod g=u /etc/passwd && \
 
 EXPOSE 9200 9300
 
-LABEL org.label-schema.build-date="2021-07-14T18:33:36.673943207Z" \
-  org.label-schema.license="Elastic-License-2.0" \
-  org.label-schema.name="Elasticsearch" \
-  org.label-schema.schema-version="1.0" \
-  org.label-schema.url="https://www.elastic.co/products/elasticsearch" \
-  org.label-schema.usage="https://www.elastic.co/guide/en/elasticsearch/reference/index.html" \
-  org.label-schema.vcs-ref="c5f60e894ca0c61cdbae4f5a686d9f08bcefc942" \
-  org.label-schema.vcs-url="https://github.com/elastic/elasticsearch" \
-  org.label-schema.vendor="Elastic" \
+RUN /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch repository-s3 repository-azure repository-gcs
+
+LABEL org.label-schema.vendor="Elastic" \
   org.label-schema.version="7.13.4" \
-  org.opencontainers.image.created="2021-07-14T18:33:36.673943207Z" \
-  org.opencontainers.image.documentation="https://www.elastic.co/guide/en/elasticsearch/reference/index.html" \
-  org.opencontainers.image.licenses="Elastic-License-2.0" \
-  org.opencontainers.image.revision="c5f60e894ca0c61cdbae4f5a686d9f08bcefc942" \
-  org.opencontainers.image.source="https://github.com/elastic/elasticsearch" \
-  org.opencontainers.image.title="Elasticsearch" \
-  org.opencontainers.image.url="https://www.elastic.co/products/elasticsearch" \
+  org.label-schema.schema-version="1.0" \
+  org.label-schema.name="Elasticsearch" \
   org.opencontainers.image.vendor="Elastic" \
-  org.opencontainers.image.version="7.13.4"
+  org.opencontainers.image.version="7.13.4" \
+  org.label-schema.license="Elastic-License-2.0" \
+  org.opencontainers.image.title="Elasticsearch" \
+  org.opencontainers.image.licenses="Elastic-License-2.0" \
+  org.label-schema.url="https://www.elastic.co/products/elasticsearch" \
+  org.opencontainers.image.source="https://github.com/elastic/elasticsearch" \
+  org.opencontainers.image.url="https://www.elastic.co/products/elasticsearch" \
+  org.opencontainers.image.revision="c5f60e894ca0c61cdbae4f5a686d9f08bcefc942" \
+  org.label-schema.usage="https://www.elastic.co/guide/en/elasticsearch/reference/index.html" \
+  org.opencontainers.image.documentation="https://www.elastic.co/guide/en/elasticsearch/reference/index.html"
 
 ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/docker-entrypoint.sh"]
 # Dummy overridable parameter parsed by entrypoint
