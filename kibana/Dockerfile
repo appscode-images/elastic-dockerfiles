@@ -104,31 +104,24 @@ RUN groupadd --gid 1000 kibana && \
       --home-dir /usr/share/kibana --no-create-home \
       kibana
 
-LABEL org.label-schema.build-date="2023-11-10T20:46:53.174Z" \
-  org.label-schema.license="Elastic License" \
-  org.label-schema.name="Kibana" \
-  org.label-schema.schema-version="1.0" \
-  org.label-schema.url="https://www.elastic.co/products/kibana" \
-  org.label-schema.usage="https://www.elastic.co/guide/en/kibana/reference/index.html" \
-  org.label-schema.vcs-ref="60e0d4fa38a2c99350f1533c141f641edbb8e608" \
-  org.label-schema.vcs-url="https://github.com/elastic/kibana" \
-  org.label-schema.vendor="Elastic" \
+LABEL org.label-schema.vendor="Kibana" \
   org.label-schema.version="7.17.15" \
-  org.opencontainers.image.created="2023-11-10T20:46:53.174Z" \
-  org.opencontainers.image.documentation="https://www.elastic.co/guide/en/kibana/reference/index.html" \
-  org.opencontainers.image.licenses="Elastic License" \
-  org.opencontainers.image.revision="60e0d4fa38a2c99350f1533c141f641edbb8e608" \
-  org.opencontainers.image.source="https://github.com/elastic/kibana" \
-  org.opencontainers.image.title="Kibana" \
-  org.opencontainers.image.url="https://www.elastic.co/products/kibana" \
+  org.label-schema.schema-version="1.0" \
+  org.label-schema.name="Elasticsearch" \
   org.opencontainers.image.vendor="Elastic" \
-  org.opencontainers.image.version="7.17.15"
-
+  org.opencontainers.image.version="7.17.15" \
+  org.label-schema.license="Elastic-License-2.0" \
+  org.opencontainers.image.title="Kibana" \
+  org.opencontainers.image.licenses="Elastic-License-2.0" \
+  org.label-schema.url="https://www.elastic.co/guide/en/kibana/reference/index.html" \
+  org.opencontainers.image.source="https://github.com/elastic/kibana" \
+  org.opencontainers.image.url="https://www.elastic.co/products/kibana" \
+  org.opencontainers.image.revision="60e0d4fa38a2c99350f1533c141f641edbb8e608" \
+  org.label-schema.usage="https://www.elastic.co/guide/en/elasticsearch/reference/index.html" \
+  org.opencontainers.image.documentation="https://www.elastic.co/guide/en/elasticsearch/reference/index.html"
 
 ENTRYPOINT ["/bin/tini", "--"]
 
-
 CMD ["/usr/local/bin/kibana-docker"]
-
 
 USER kibana
