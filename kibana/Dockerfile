@@ -51,6 +51,19 @@ RUN chmod g+ws /usr/share/kibana && find /usr/share/kibana -gid 0 -and -not -per
 RUN groupadd --gid 1000 kibana && useradd --uid 1000 --gid 1000 --home-dir /usr/share/kibana --no-create-home kibana
 USER kibana
 
-LABEL org.label-schema.schema-version="1.0" org.label-schema.vendor="Elastic" org.label-schema.name="kibana" org.label-schema.version="6.8.23" org.label-schema.url="https://www.elastic.co/products/kibana" org.label-schema.vcs-url="https://github.com/elastic/kibana" org.label-schema.license="Elastic License" license="Elastic License"
+LABEL org.label-schema.vendor="Kibana" \
+  org.label-schema.version="6.8.23" \
+  org.label-schema.schema-version="1.0" \
+  org.label-schema.name="Elasticsearch" \
+  org.opencontainers.image.vendor="Elastic" \
+  org.opencontainers.image.version="6.8.23" \
+  org.label-schema.license="Elastic-License-2.0" \
+  org.opencontainers.image.title="Kibana" \
+  org.opencontainers.image.licenses="Elastic-License-2.0" \
+  org.label-schema.url="https://www.elastic.co/guide/en/kibana/reference/index.html" \
+  org.opencontainers.image.source="https://github.com/elastic/kibana" \
+  org.opencontainers.image.url="https://www.elastic.co/products/kibana" \
+  org.label-schema.usage="https://www.elastic.co/guide/en/elasticsearch/reference/index.html" \
+  org.opencontainers.image.documentation="https://www.elastic.co/guide/en/elasticsearch/reference/index.html"
 
 CMD ["/usr/local/bin/kibana-docker"]

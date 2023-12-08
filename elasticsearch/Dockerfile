@@ -76,27 +76,25 @@ RUN chgrp 0 /usr/local/bin/docker-entrypoint.sh && \
     chmod g=u /etc/passwd && \
     chmod 0775 /usr/local/bin/docker-entrypoint.sh
 
+RUN /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch repository-s3 repository-azure repository-gcs
+
 EXPOSE 9200 9300
 
-LABEL org.label-schema.build-date="2022-01-06T21:30:50.087716Z" \
-  org.label-schema.license="Elastic-License" \
-  org.label-schema.name="Elasticsearch" \
-  org.label-schema.schema-version="1.0" \
-  org.label-schema.url="https://www.elastic.co/products/elasticsearch" \
-  org.label-schema.usage="https://www.elastic.co/guide/en/elasticsearch/reference/index.html" \
-  org.label-schema.vcs-ref="4f67856884ff580d8b48a858411b8c17cb0f8cdb" \
-  org.label-schema.vcs-url="https://github.com/elastic/elasticsearch" \
-  org.label-schema.vendor="Elastic" \
+LABEL org.label-schema.vendor="Elastic" \
   org.label-schema.version="6.8.23" \
-  org.opencontainers.image.created="2022-01-06T21:30:50.087716Z" \
-  org.opencontainers.image.documentation="https://www.elastic.co/guide/en/elasticsearch/reference/index.html" \
-  org.opencontainers.image.licenses="Elastic-License" \
-  org.opencontainers.image.revision="4f67856884ff580d8b48a858411b8c17cb0f8cdb" \
-  org.opencontainers.image.source="https://github.com/elastic/elasticsearch" \
-  org.opencontainers.image.title="Elasticsearch" \
-  org.opencontainers.image.url="https://www.elastic.co/products/elasticsearch" \
+  org.label-schema.schema-version="1.0" \
+  org.label-schema.name="Elasticsearch" \
   org.opencontainers.image.vendor="Elastic" \
-  org.opencontainers.image.version="6.8.23"
+  org.opencontainers.image.version="6.8.23" \
+  org.label-schema.license="Elastic-License-2.0" \
+  org.opencontainers.image.title="Elasticsearch" \
+  org.opencontainers.image.licenses="Elastic-License-2.0" \
+  org.label-schema.url="https://www.elastic.co/products/elasticsearch" \
+  org.opencontainers.image.source="https://github.com/elastic/elasticsearch" \
+  org.opencontainers.image.url="https://www.elastic.co/products/elasticsearch" \
+  org.opencontainers.image.revision="4f67856884ff580d8b48a858411b8c17cb0f8cdb" \
+  org.label-schema.usage="https://www.elastic.co/guide/en/elasticsearch/reference/index.html" \
+  org.opencontainers.image.documentation="https://www.elastic.co/guide/en/elasticsearch/reference/index.html"
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 # Dummy overridable parameter parsed by entrypoint
