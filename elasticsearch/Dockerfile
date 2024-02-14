@@ -19,9 +19,9 @@ RUN groupadd -g 1000 elasticsearch &&     adduser -u 1000 -g 1000 -d /usr/share/
 
 WORKDIR /usr/share/elasticsearch
 
-RUN cd /opt && curl --retry 8 -s -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.3.1-linux-x86_64.tar.gz && cd -
+RUN cd /opt && curl --retry 8 -s -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.8.2-linux-x86_64.tar.gz && cd -
 
-RUN tar zxf /opt/elasticsearch-7.3.1-linux-x86_64.tar.gz --strip-components=1
+RUN tar zxf /opt/elasticsearch-8.8.2-linux-x86_64.tar.gz --strip-components=1
 RUN grep ES_DISTRIBUTION_TYPE=tar /usr/share/elasticsearch/bin/elasticsearch-env     && sed -ie 's/ES_DISTRIBUTION_TYPE=tar/ES_DISTRIBUTION_TYPE=docker/' /usr/share/elasticsearch/bin/elasticsearch-env
 RUN mkdir -p config data logs
 RUN chmod 0775 config data logs
