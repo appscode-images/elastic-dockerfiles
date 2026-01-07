@@ -1,5 +1,3 @@
-
-
 ################################################################################
 # Build stage 1 `builder`:
 # Extract Elasticsearch artifact
@@ -94,6 +92,9 @@ WORKDIR /usr/share/elasticsearch
 
 COPY --from=builder --chown=0:0 /usr/share/elasticsearch /usr/share/elasticsearch
 COPY --from=builder --chown=0:0 /bin/tini /bin/tini
+
+# 1. Pull yq binary from official image
+COPY --from=mikefarah/yq:4 /usr/bin/yq /usr/local/bin/yq
 
 ENV PATH=/usr/share/elasticsearch/bin:$PATH
 ENV SHELL=/bin/bash
