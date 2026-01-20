@@ -70,6 +70,9 @@ ENV PATH /usr/share/elasticsearch/bin:$PATH
 
 COPY --chown=1000:0 bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
+# 1. Pull yq binary from official image
+COPY --from=mikefarah/yq:4 /usr/bin/yq /usr/local/bin/yq
+
 # Openshift overrides USER and uses ones with randomly uid>1024 and gid=0
 # Allow ENTRYPOINT (and ES) to run even with a different user
 RUN chgrp 0 /usr/local/bin/docker-entrypoint.sh && \
