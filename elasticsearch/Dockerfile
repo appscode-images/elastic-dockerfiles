@@ -52,6 +52,9 @@ RUN tar -zxf /tmp/elasticsearch.tar.gz --strip-components=1
 COPY config/elasticsearch.yml config/
 COPY config/log4j2.properties config/log4j2.docker.properties
 
+# 1. Pull yq binary from official image
+COPY --from=mikefarah/yq:4 /usr/bin/yq /usr/local/bin/yq
+
 #  1. Configure the distribution for Docker
 #  2. Create required directory
 #  3. Move the distribution's default logging config aside
